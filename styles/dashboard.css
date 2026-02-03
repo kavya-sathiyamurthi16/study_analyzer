@@ -1,0 +1,89 @@
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.metric-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.5rem;
+    border-radius: var(--radius-sm);
+    border-left: 4px solid var(--accent-primary);
+}
+
+.metric-card.good {
+    border-color: var(--success);
+}
+
+.metric-card.bad {
+    border-color: var(--danger);
+}
+
+.metric-card.neutral {
+    border-color: var(--warning);
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    margin: 0.5rem 0;
+}
+
+.schedule-list {
+    list-style: none;
+}
+
+.schedule-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.schedule-item:last-child {
+    border-bottom: none;
+}
+
+.time-slot {
+    color: var(--accent-secondary);
+    font-weight: 600;
+    width: 100px;
+}
+
+.activity {
+    flex-grow: 1;
+}
+
+.tips-list li {
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text-secondary);
+}
+
+.tips-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+}
+
+.chart-placeholder {
+    height: 200px;
+    background: linear-gradient(180deg, rgba(56, 189, 248, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+    border-bottom: 1px solid var(--accent-primary);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    padding-bottom: 5px;
+}
+
+.bar {
+    width: 30px;
+    background: var(--accent-primary);
+    border-radius: 4px 4px 0 0;
+    transition: height 1s ease-out;
+}

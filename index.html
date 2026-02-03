@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Study Pattern Analyzer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/dashboard_extras.css">
+    <link rel="stylesheet" href="styles/multiselect.css">
+    <link rel="stylesheet" href="styles/v2_styles.css">
+    <link rel="stylesheet" href="styles/v3_styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="main-header">
+            <h1 class="logo">Study<span class="gradient-text">Sync</span> AI</h1>
+            <p class="subtitle">Optimize your learning potential with data-driven insights.</p>
+        </header>
+
+        <main id="main-content">
+            <!-- Dynamic Content will be injected here -->
+            <section id="onboarding" class="fade-in">
+                <div class="card intro-card">
+                    <h2>Welcome to your optimization journey</h2>
+                    <p>Let's analyze your current habits to build the perfect schedule for you.</p>
+                    <button id="start-btn" class="btn btn-primary">Start Analysis</button>
+                </div>
+            </section>
+
+            <section id="input-form" class="hidden">
+                <div class="card form-card">
+                    <h2>Design your Strategy</h2>
+                    <form id="study-data-form">
+                        <div class="form-group grid-2">
+                            <div>
+                                <label for="main-goal">Main Goal</label>
+                                <input type="text" id="main-goal" placeholder="e.g. Ace Final Exams" required>
+                            </div>
+                            <div>
+                                <label for="deadline">Deadline</label>
+                                <div style="display:flex; gap:0.5rem">
+                                    <input type="date" id="deadline" required style="flex-grow:1">
+                                    <button type="button" id="set-1-week" class="btn"
+                                        style="padding:0.5rem; font-size:0.8rem;">+1 Week</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group grid-2">
+                            <div>
+                                <label for="hours">Daily Hours</label>
+                                <input type="number" id="hours" min="1" max="24" required placeholder="e.g. 4">
+                            </div>
+                            <div>
+                                <label for="peak-time">Peak Energy Time</label>
+                                <select id="peak-time">
+                                    <option value="morning">Morning (6AM - 11AM)</option>
+                                    <option value="afternoon">Afternoon (12PM - 4PM)</option>
+                                    <option value="evening">Evening (5PM - 9PM)</option>
+                                    <option value="night">Night (10PM - 2AM)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Subjects & Confidence</label>
+                            <div class="multi-select-container">
+                                <div id="selected-subjects" class="selected-tags"></div>
+                                <input type="text" id="subject-search" placeholder="Search (e.g. Math)..."
+                                    autocomplete="off">
+                                <ul id="subject-dropdown" class="dropdown-list hidden"></ul>
+                            </div>
+                            <small class="hint">Click tags to toggle confidence: <span style="color:var(--danger)">Red
+                                    (Weak)</span> → <span style="color:var(--warning)">Yellow</span> → <span
+                                    style="color:var(--success)">Green (Strong)</span></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="methods">Primary Study Method</label>
+                            <select id="methods">
+                                <option value="default" disabled selected>Select a method...</option>
+                                <option value="reading">Passive Reading</option>
+                                <option value="summarizing">Summarizing</option>
+                                <option value="highlighting">Highlighting</option>
+                                <option value="flashcards">Flashcards</option>
+                                <option value="practice_tests">Practice Tests</option>
+                                <option value="teaching">Teaching Others/Feynman</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="feeling">How do you usually feel after studying?</label>
+                            <select id="feeling">
+                                <option value="exhausted">Exhausted & Burned out</option>
+                                <option value="confident">Confident & Productive</option>
+                                <option value="confused">Confused / Little retention</option>
+                                <option value="distracted">Distracted</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Generate Insight</button>
+                    </form>
+                </div>
+            </section>
+
+            <section id="results-dashboard" class="hidden">
+                <!-- Results injected by JS -->
+            </section>
+        </main>
+    </div>
+
+    <!-- Chatbot Widget -->
+    <div id="ai-coach-widget" class="hidden">
+        <div class="coach-header">
+            <span>🤖 AI Study Coach</span>
+            <span id="close-coach">×</span>
+        </div>
+        <div id="coach-messages" class="coach-messages">
+            <div class="msg bot">Hello! I'm your study coach. How can I motivate you today?</div>
+        </div>
+        <div class="coach-input-area">
+            <div class="suggestion-chips">
+                <span class="chip" onclick="askCoach('motivation')">😤 Motivation</span>
+                <span class="chip" onclick="askCoach('break')">☕ Need a Break</span>
+                <span class="chip" onclick="askCoach('tip')">💡 Quick Tip</span>
+            </div>
+        </div>
+    </div>
+    <button id="coach-toggle-btn" class="hidden">💬</button>
+
+    <script src="js/subjects.js"></script>
+    <script src="js/gamification.js"></script>
+    <script src="js/planner.js"></script>
+    <script src="js/coach.js"></script>
+    <script src="js/analyzer.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

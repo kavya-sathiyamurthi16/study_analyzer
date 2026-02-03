@@ -1,0 +1,118 @@
+/* V2 Updates */
+
+/* Grid Layout for Form */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Confidence Tags */
+.tag {
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    user-select: none;
+}
+
+.tag:hover {
+    transform: scale(1.05);
+}
+
+.tag[data-confidence="low"] {
+    background: var(--danger);
+    color: #fff;
+}
+
+.tag[data-confidence="medium"] {
+    background: var(--warning);
+    color: #1e293b;
+    /* Dark text for contrast */
+}
+
+.tag[data-confidence="high"] {
+    background: var(--success);
+    color: #1e293b;
+}
+
+/* Heatmap Grid */
+.heatmap-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.heatmap-cell {
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    flex: 1 1 150px;
+    text-align: center;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+.heatmap-cell::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.heatmap-cell.weak {
+    background: rgba(248, 113, 113, 0.2);
+    border: 1px solid var(--danger);
+    color: var(--danger);
+}
+
+.heatmap-cell.moderate {
+    background: rgba(251, 191, 36, 0.2);
+    border: 1px solid var(--warning);
+    color: var(--warning);
+}
+
+.heatmap-cell.strong {
+    background: rgba(52, 211, 153, 0.2);
+    border: 1px solid var(--success);
+    color: var(--success);
+}
+
+/* Revision Calendar */
+.revision-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-top: 1rem;
+}
+
+.rev-day {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.5rem;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.rev-day.active {
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid var(--accent-primary);
+}
+
+.rev-day .day-name {
+    font-weight: bold;
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.rev-day .task-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent-secondary);
+    border-radius: 50%;
+    display: inline-block;
+    margin: 1px;
+}
